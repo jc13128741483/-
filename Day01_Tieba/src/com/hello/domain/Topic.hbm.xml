@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hello.domain">
+	<class name="Topic" table="t_topic">
+		<id name="tid" column="tid">
+			<generator class="native"></generator>
+		</id>
+		<!-- 可以不写column，默认和name值一致 -->
+		<property name="title"></property>
+		<property name="topicContent"></property>
+		<property name="ipAddr"></property>
+		<property name="lastReplyDate"></property>
+		<property name="createDate"></property>
+		<set name="replySet">
+			<key column="tid"></key>
+			<one-to-many class="Reply"/>
+		</set>
+	</class>
+</hibernate-mapping>
